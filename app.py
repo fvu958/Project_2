@@ -22,19 +22,25 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-@app.route("/home")
-def home():
-    return 
-
-@app.route("/viz")
-def viz_route():
-    return 
-
-
 @app.route("/data")
 def data_route():
-    return 
-
+    response = session.query(Alcohol).all()
+    results=[]
+    for row in response:
+        row_dict = {
+            "Country": row.Country,
+            "Total": row.Total,
+            "Recorded_Consumption": row.Recorded_Consumption,
+            "Unrecorded_Consumption": row.Unrecorded_Consumption,
+            "Beer_Percent": row.Beer_Percent,
+            "Wine_Percent": row.Wine_Percent,
+            "Spirits_Percent": row.Spirits_Percent,
+            "Other_Percent": row.Other_Percent,
+            "Purchase_Age": row.Purchase_Age,
+            "Country_Code": row.Country_Code,
+            }
+            results.append(row_dict)
+    return jsonify(results)
 
 if __name__ == '__main__':
     app.run()
