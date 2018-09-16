@@ -1,24 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Leaflet GeoJSON Example</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-    <style type="text/css">
-        .leaflet-container{background-color:#c5e8ff;}
-    </style>
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
-    </head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Worldwide Alcohol Consumption</title>
+    <!-- --------------------------------bootstrap------------------------------------ -->
+    <!-- --------------------------------Latest compiled and minified CSS------------- -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <!-- ------------------------------leaflet---------------------------------------- -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <!-- ------------------------------Place this after Leaflet's CSS----------------- -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
+    
+    <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
+    <!-- ---------------------------------d3------------------------------------------ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <!-- --------------------------------our css--------------------------------------- -->
+    <link href="static/css/style.css" rel="stylesheet">
+    
+</head>
+<header>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">Data Table</a>
+        <a href="#contact">Visualizations</a>
+    </div>
+</header>
 <body>
-    <div id="map" style="width: 100%; height: 100%"></div>
-
+    <div id="heading" class="jumbotron jumbotron-fluid" style="text-align:center; height:50%;">
+        
+        <h1>Worldwide Alcohol Consumption</h1>
+        <div class="container">
+            <h3>If you have 5 drinks in one hand, and 6 in another, what do you have?
+                A drinking problem. </h3>
+            <h4>The purpose of this page is to showcase how much Alcohol is consumed worldwide. Go to
+                the world map below and select your desired country to recieve the information that is
+                available to you regarding that country.
+            </h4> 
+        </div>
+    </div>
+    <div class="line" style="background:peru; position:relative; height:8px"></div>
+    <hr>
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="container">
+                <h1>World Map Chloropleth of Drinking</h1>
+                <hr>
+                <h3>This map displays the popularity of certain alcoholic drink by countries.</h3>
+               
+                <hr>        
+            </div>
+        </div>
+    </div>
+    <!-----------------------------------Chloropleth Map ------------------------------- -->   
+    <div id="map" style="width: 90%; height: 90%"></div>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
     <script type="text/javascript" src="static/js/choropleth.js"></script>
-    <!-- <script type="text/javascript" src="static/js/config.js"></script>
-    <script type="text/javascript" src="static/js/logic.js"></script> -->
+    <script type="text/javascript" src="static/js/config.js"></script>
+    <script type="text/javascript" src="static/js/logic.js"></script>
     <script>
+        var geojsonLayer = new L.GeoJSON.AJAX("vectormap.geojson");       
+        geojsonLayer.addTo(map);</script>
+    <!-- <script>
         var myGeoJSONPath = 'vectormap.json';
         var myCustomStyle = {
             stroke: false,
@@ -29,12 +83,26 @@
         $.getJSON(myGeoJSONPath,function(data){
             console.log(data);
             var map = L.map('map').setView([39.74739, -105], 4);
-
             L.geoJson(data, {
                 clickable: false,
                 style: myCustomStyle
             }).addTo(map);
         })
-    </script>
+    </script> -->
+    <hr>
+    <div class="line" style="background:peru; position:relative; height:8px"></div>
+    <div class="height" style="height:20px"></div>
+    
+    <!---------------------------------- Pie Chart and Bubble Plot-------------------------------------- -->
+    <div id="chartContainer" style="height: 370px; width: 100%;">
+        <script type="text/javascript" src="static/js/plot.js"></script>    
+    </div>
+    
+    <div class="line" style="background:peru; position:relative; height:8px"></div>
+    <div class="height" style="height:20px"></div>
+    <div id="chartContainer2" style="height: 370px; width: 100%; "> </div>
+    <div class="height" style="height:40px"></div> 
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>      
+      
 </body>
 </html>
