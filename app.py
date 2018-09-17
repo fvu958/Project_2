@@ -38,6 +38,7 @@ def data_route():
             "Other_Percent": row.Other_Percent,
             "Purchase_Age": row.Purchase_Age,
             "Country_Code": row.Country_Code,
+            "Death_Rate": row.Death_Rate,
             }
         results.append(row_dict)
     return jsonify(results)
