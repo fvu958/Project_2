@@ -22,6 +22,14 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
+@app.route("/table")
+def home():
+    return render_template("table.html")
+
+@app.route("/bio")
+def home():
+    return render_template("bio.html")
+
 @app.route("/data")
 def data_route():
     response = session.query(Alcohol).all()
