@@ -18,7 +18,7 @@ session = Session(engine)
 
 app = Flask(__name__)
 
-@app.route("/home")
+@app.route("/")
 def home():
     return render_template("index.html")
 
@@ -39,8 +39,8 @@ def data_route():
             "Purchase_Age": row.Purchase_Age,
             "Country_Code": row.Country_Code,
             }
-            results.append(row_dict)
+        results.append(row_dict)
     return jsonify(results)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
