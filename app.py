@@ -19,15 +19,15 @@ session = Session(engine)
 app = Flask(__name__)
 
 @app.route("/home")
-def home():
+def home_route():
     return render_template("home.html")
 
 @app.route("/table")
-def home():
+def table_route():
     return render_template("table.html")
 
 @app.route("/bio")
-def home():
+def bio_route():
     return render_template("bio.html")
 
 @app.route("/data")
