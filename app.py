@@ -24,11 +24,11 @@ def home_route():
 
 @app.route("/table")
 def table_route():
-    return render_template("table.html")
+    return render_template("datatable.html")
 
 @app.route("/bio")
 def bio_route():
-    return render_template("bio.html")
+    return render_template("bios.html")
 
 @app.route("/data")
 def data_route():
