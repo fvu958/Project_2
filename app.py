@@ -22,13 +22,13 @@ app = Flask(__name__)
 def home_route():
     return render_template("home.html")
 
-@app.route("/table")
+@app.route("/datatable")
 def table_route():
     return render_template("datatable.html")
 
-@app.route("/bio")
+@app.route("/story")
 def bio_route():
-    return render_template("bios.html")
+    return render_template("story.html")
 
 @app.route("/data")
 def data_route():
