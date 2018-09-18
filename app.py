@@ -22,6 +22,10 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+@app.route("/bubble")
+def bubble():
+    return render_template("bubble.html")
+
 @app.route("/data")
 def data_route():
     response = session.query(Alcohol).all()
@@ -38,6 +42,8 @@ def data_route():
             "Other_Percent": row.Other_Percent,
             "Purchase_Age": row.Purchase_Age,
             "Country_Code": row.Country_Code,
+            "Death_Rate": row.Death_Rate,
+            "GDP": row.GDP,
             }
         results.append(row_dict)
     return jsonify(results)
