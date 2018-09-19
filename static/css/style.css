@@ -3,7 +3,7 @@ body {
     padding: 0;
     margin: 0;
     
-    background-image: url(../images/drink-image.jpeg);
+    background-image: url(../images/drink-image.jpg);
   }
 
 .navbar {
@@ -20,12 +20,11 @@ html {
 #map {
     width: 80%;
     margin: 0 10%;
-
 }
 
 #drinkButton {
         text-align: center;
-        background-color: navy; /* Navy*/
+        background-color: white;
         border: none;
         color: navy;
         padding: 15px 32px;
@@ -33,3 +32,29 @@ html {
         /* display: inline-block; */
         font-size: 16px;
 }
+#beer {
+    border: 2px solid navy;
+    border-radius: 12px;
+}
+#wine {
+    border: 2px solid navy;
+    border-radius: 12px;
+}
+#spirits {
+    border: 2px solid navy;
+    border-radius: 12px;
+}
+#other {
+    border: 2px solid navy;
+    border-radius: 12px;
+}
+#consumeRate {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    z-index: 15;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+    /* background: red; */
+  }

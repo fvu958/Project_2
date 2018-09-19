@@ -27,7 +27,8 @@
   <script type="text/javascript" src="static/js/choropleth.js"></script>
 
   <!-- Our CSS -->
-  <!-- <link rel="stylesheet" type="text/css" href="static/css/style.css"> -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  
 
 </head>
 
@@ -51,7 +52,7 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        <ul class="nav navbar-nav navbar-left">
+        <ul class="nav navbar-nav navbar-left" style="background-color:rgb(120, 234, 225);">
           <li><a href="/datatable">Data</a></li>
           <li><a href="/story">Story</a></li>
         </ul>
@@ -65,9 +66,14 @@
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="row">
-              <h2>Data</h2>
+              <h2 style="text-align:center">Data Table and Sources</h2>
               <hr>
-              <p>Raw data compiled from multiple sources.</p>
+              <p style="text-indent: 25px">Data compiled from the following sources using Python Pandas:
+                <li style="text-indent: 50px"><a href ="https://en.wikipedia.org/wiki/List_of_countries_by_alcohol_consumption_per_capita">Alcohol Consumption per Capita</a></li>
+                <li style="text-indent: 50px"><a href ="https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)">GDP per International Montetary Fund</a></li>
+                <li style="text-indent: 50px"><a href ="https://drinkingage.procon.org/view.resource.php?resourceID=004294">Minimum Legal Drinking Age by Country</a></li>
+                <li style="text-indent: 50px"><a href ="https://www.worldlifeexpectancy.com/cause-of-death/alcohol/by-country/">World Death Rate by Alcohol</a></li>
+              </p>
               <div class="col-md-12">
                 <table class="table table-bordered table-hover table-condensed">
                   <thead>
