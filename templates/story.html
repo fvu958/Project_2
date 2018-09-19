@@ -12,23 +12,6 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
-    <!-- Leaflet CSS & JS-->
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-        crossorigin="" />
-
-    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-        crossorigin=""></script>
-
-    <!-- d3 JavaScript -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-
-    <!-- Leaflet-Choropleth JavaScript -->
-    <script type="text/javascript" src="static/js/choropleth.js"></script>
-
-    <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
-    <!-- <script src = "dropdown_options.js"></script>  -->
 </head>
 
 <body>
@@ -58,32 +41,25 @@
             </div>
         </div>
     </nav>
-
-    <!-- The div where we will inject our map -->
-    <div id="drinkButton">
-        <button id="beer">Beer</button>
-        <button id="wine">Wine</button>
-        <button id="spirits">Spirits</button>
-        <button id="other">Other</button>
-        
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <h2>Story</h2>
+                            <hr>
+                            <p>A summary of our findings.</p>
+                            <div class="col-md-12">
+                                <p>Placeholder Text?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
-    <br>
-    <div id="map"></div>
-    <!-- <select id="countryDataset" onchange="alcoholChanged(this.value)"> -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
-
-    <div id="pie"></div>
-    <!-- <select id="selDataset" onchange="countryChanged(this.value)">
-    <script type="text/javascript" src="static/js/piechart.js"></script> -->
-
-
-
-    <div id="consumeRate"></div>
-
-
-    <div id="consumeGDP"></div>
-
 </body>
 
 </html>

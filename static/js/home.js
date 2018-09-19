@@ -1,23 +1,63 @@
-var url = "http://127.0.0.1:5000/data";
-var maindata = d3.json(url, function (json) {
-  //code here
-  console.log(json)
+console.log("Hello");
+var myMap = L.map("map", {
+  center: [0, -0],
+  zoom: 3
 });
 
-// var myMap = L.map("map", {
-// });
+const API_KEY = "pk.eyJ1IjoiZnZ1OTU4IiwiYSI6ImNqbTVldHhwajBlZXgzcXJ0bno3bDloaXkifQ.aMSQpbW9A8g7YU9n2If_bg"
 
-// var geojsonLayer = new L.GeoJSON.AJAX("vectormap.geojson");       
-// geojsonLayer.addTo(myMap);
+L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.streets",
+  accessToken: API_KEY
+}).addTo(myMap);
 
-// var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/fvu958/cjm5efyz2bx9p2sqrgwuntpif.html?fresh=true&title=true&access_token=pk.eyJ1IjoiZnZ1OTU4IiwiYSI6ImNqbTVlNno5NjB0ZDAza3FwY3JraWh3cHIifQ.bsDZaPiQTbIoSrSgEwWiyQ#1.2/45.407741/14.518245/0", {
-//     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-//     id: "mapbox.light",
-//     accessToken: "pk.eyJ1IjoiZnZ1OTU4IiwiYSI6ImNqbTVldHhwajBlZXgzcXJ0bno3bDloaXkifQ.aMSQpbW9A8g7YU9n2If_bg"
-// });
+var geojsonPath = "static/js/vectormap.json";
 
-// // var countries = L.layerGroup()
+d3.json(geojsonPath, function (geojsonData) {
+  d3.json("/data", function (countryData) {
 
-// var baseMaps = {
-//     "Light Map": lightmap
-// };
+    var features = geojsonData.features;
+
+    features.forEach(function (feature) {
+
+      var properties = feature.properties;
+      var countryCode = properties.iso_a3;
+
+      countryData.forEach(function (country) {
+        if (countryCode === country.Country_Code) {
+          properties["Beer_Percent"] = country["Beer_Percent"];
+          properties["Wine_Percent"] = country["Wine_Percent"];
+          properties["Spirits_Percent"] = country["Spirits_Percent"];
+          properties["Other_Percent"] = country["Other_Percent"];
+        }
+      });
+    });
+    var beer = L.choropleth(geojsonData, {
+      valueProperty: "Beer_Percent",
+      scale: ["purple","red"],
+      steps: 10
+    }).addTo(myMap);
+
+    var wine = L.choropleth(geojsonData, {
+      valueProperty: "Wine_Percent",
+      scale: ["red","black"],
+      steps: 10
+    }).addTo(myMap);
+
+    var spirits = L.choropleth(geojsonData, {
+      valueProperty: "Spirits_Percent",
+      scale: ["yellow","orange"],
+      steps: 10
+    }).addTo(myMap);
+
+    var other = L.choropleth(geojsonData, {
+      valueProperty: "Other_Percent",
+      scale: ["orange","green"],
+      steps: 10
+    }).addTo(myMap);
+
+
+  });
+});

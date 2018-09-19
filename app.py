@@ -19,11 +19,20 @@ session = Session(engine)
 app = Flask(__name__)
 
 @app.route("/home")
-def home():
+def home_route():
     return render_template("home.html")
+
+@app.route("/datatable")
+def table_route():
+    return render_template("datatable.html")
+
+@app.route("/story")
+def bio_route():
+    return render_template("story.html")
 
 @app.route("/data")
 def data_route():
+
     response = session.query(Alcohol).all()
     results=[]
     for row in response:
@@ -38,6 +47,7 @@ def data_route():
             "Other_Percent": row.Other_Percent,
             "Purchase_Age": row.Purchase_Age,
             "Country_Code": row.Country_Code,
+            "GDP": row.GDP,
             "Death_Rate": row.Death_Rate,
             }
         results.append(row_dict)
