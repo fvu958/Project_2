@@ -1,16 +1,8 @@
+console.log("Hello");
 var myMap = L.map("map", {
-  center: [37.7, -122.4],
-  zoom: 10
+  center: [0, -0],
+  zoom: 3
 });
-
-var url = "http://127.0.0.1:5000/data";
-var maindata = d3.json(url, function (json) {
-  //code here
-  console.log(json)
-});
-
-// var geojsonLayer = new L.GeoJSON.AJAX("vectormap.geojson");       
-// geojsonLayer.addTo(myMap);
 
 const API_KEY = "pk.eyJ1IjoiZnZ1OTU4IiwiYSI6ImNqbTVldHhwajBlZXgzcXJ0bno3bDloaXkifQ.aMSQpbW9A8g7YU9n2If_bg"
 
@@ -21,8 +13,51 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: API_KEY
 }).addTo(myMap);
 
-// // var countries = L.layerGroup()
+var geojsonPath = "static/js/vectormap.json";
 
-// var baseMaps = {
-//     "Light Map": lightmap
-// };
+d3.json(geojsonPath, function (geojsonData) {
+  d3.json("/data", function (countryData) {
+
+    var features = geojsonData.features;
+
+    features.forEach(function (feature) {
+
+      var properties = feature.properties;
+      var countryCode = properties.iso_a3;
+
+      countryData.forEach(function (country) {
+        if (countryCode === country.Country_Code) {
+          properties["Beer_Percent"] = country["Beer_Percent"];
+          properties["Wine_Percent"] = country["Wine_Percent"];
+          properties["Spirits_Percent"] = country["Spirits_Percent"];
+          properties["Other_Percent"] = country["Other_Percent"];
+        }
+      });
+    });
+    var beer = L.choropleth(geojsonData, {
+      valueProperty: "Beer_Percent",
+      scale: ["purple","red"],
+      steps: 10
+    }).addTo(myMap);
+
+    var wine = L.choropleth(geojsonData, {
+      valueProperty: "Wine_Percent",
+      scale: ["red","black"],
+      steps: 10
+    }).addTo(myMap);
+
+    var spirits = L.choropleth(geojsonData, {
+      valueProperty: "Spirits_Percent",
+      scale: ["yellow","orange"],
+      steps: 10
+    }).addTo(myMap);
+
+    var other = L.choropleth(geojsonData, {
+      valueProperty: "Other_Percent",
+      scale: ["orange","green"],
+      steps: 10
+    }).addTo(myMap);
+
+
+  });
+});

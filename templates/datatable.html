@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <title>Worldwide Alcohol Consumption</title>
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
@@ -33,7 +31,7 @@
 
 </head>
 
-<body style="background-color: lightgray">
+<body>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -47,15 +45,15 @@
         <div class="col-md-1"></div>
         <div class="col-md-1"></div>
         <div class="col-md-1"></div>
-        <a class="navbar-brand" href="home.html" style="color: white; background-color: navy;">
+        <a class="navbar-brand" href="/home" style="color: white; background-color: navy;">
           <span class="nav-color">World Alcohol Consumption</span>
         </a>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="datatable.html">Data</a></li>
-          <li><a href="story.html">Bios</a></li>
+          <li><a href="/datatable">Data</a></li>
+          <li><a href="/story">Story</a></li>
         </ul>
       </div>
     </div>
@@ -2801,6 +2799,67 @@
                       <td align="right">0.38</td>
                     </tr>
                   </tbody>
+                  <script>
+                    function sortTable(n) {
+                      var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                      table = document.getElementById("myTable2");
+                      switching = true;
+                      // Set the sorting direction to ascending:
+                      dir = "asc";
+                      /* Make a loop that will continue until
+                      no switching has been done: */
+                      while (switching) {
+                        // Start by saying: no switching is done:
+                        switching = false;
+                        rows = table.rows;
+                        /* Loop through all table rows (except the
+                        first, which contains table headers): */
+                        for (i = 1; i < (rows.length - 1); i++) {
+                          // Start by saying there should be no switching:
+                          shouldSwitch = false;
+                          /* Get the two elements you want to compare,
+                          one from current row and one from the next: */
+                          x = rows[i].getElementsByTagName("TD")[n];
+                          y = rows[i + 1].getElementsByTagName("TD")[n];
+                          /* Check if the two rows should switch place,
+                          based on the direction, asc or desc: */
+                          if (dir == "asc") {
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                              // If so, mark as a switch and break the loop:
+                              shouldSwitch = true;
+                              break;
+                            }
+                          } else if (dir == "desc") {
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                              // If so, mark as a switch and break the loop:
+                              shouldSwitch = true;
+                              break;
+                            }
+                          }
+                        }
+                        if (shouldSwitch) {
+                          /* If a switch has been marked, make the switch
+                          and mark that a switch has been done: */
+                          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                          switching = true;
+                          // Each time a switch is done, increase this count by 1:
+                          switchcount++;
+                        } else {
+                          /* If no switching has been done AND the direction is "asc",
+                          set the direction to "desc" and run the while loop again. */
+                          if (switchcount == 0 && dir == "asc") {
+                            dir = "desc";
+                            switching = true;
+                          }
+                          if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                            shouldSwitch = true;
+                            break;
+                          }
+                        }
+                      }
+                    }
+                    }
+                  </script>
                 </table>
               </div>
             </div>

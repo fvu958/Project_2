@@ -32,6 +32,7 @@ def bio_route():
 
 @app.route("/data")
 def data_route():
+
     response = session.query(Alcohol).all()
     results=[]
     for row in response:
@@ -46,6 +47,7 @@ def data_route():
             "Other_Percent": row.Other_Percent,
             "Purchase_Age": row.Purchase_Age,
             "Country_Code": row.Country_Code,
+            "GDP": row.GDP,
             "Death_Rate": row.Death_Rate,
             }
         results.append(row_dict)

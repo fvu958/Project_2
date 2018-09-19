@@ -37,7 +37,7 @@ function getCountryName() {
 
 getCountryName();
 
-function optionChanged(pieCountry) {
+function countryChanged(pieCountry) {
     updatePie(pieCountry);
 };
 
@@ -78,3 +78,21 @@ function updatePie(pieCountry) {
         Plotly.newPlot("pieChart", data, layout)
     });
 };
+
+
+function getCountryName() {
+    var selector = document.getElementById('selDataset');
+    var url = "/data";
+    Plotly.d3.json(url, function (error, response) {
+        if (error) return console.warn(error);
+        var data = response;
+        data.map(function (pieCountry) {
+            var option = document.createElement('option')
+            option.text = pieCountry
+            option.value = pieCountry
+            selector.appendChild(option)
+        });
+    });
+};
+
+getCountryName();
