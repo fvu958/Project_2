@@ -35,47 +35,14 @@ d3.json(geojsonPath, function (geojsonData) {
       });
     });
 
-    var beer = L.choropleth(geojsonData, {
-      valueProperty: "Beer_Percent",
-      scale: ["white","red"],
+    var wine = L.choropleth(geojsonData, {
+      valueProperty: "Wine_Percent",
+      scale: ["white","purple"],
       weight: 0.25,
       color: "black",
       opacity: 100,
-      fillOpacity: 1,
+      fillOpacity: .75,
       steps: 100
-
     }).addTo(myMap);
-
-    // var wine = L.choropleth(geojsonData, {
-    //   valueProperty: "Wine_Percent",
-    //   scale: ["white","purple"],
-    //   weight: 0.25,
-    //   color: "black",
-    //   opacity: 100,
-    //   fillOpacity: 1,
-    //   steps: 100
-    // }).addTo(myMap);
-
-    // var spirits = L.choropleth(geojsonData, {
-    //   valueProperty: "Spirits_Percent",
-    //   scale: ["white","orange"],
-    //   weight: 0.25,
-    //   color: "black",
-    //   opacity: 100,
-    //   fillOpacity: 1,
-    //   steps: 100
-    // }).addTo(myMap);
-
-    // var other = L.choropleth(geojsonData, {
-    //   valueProperty: "Other_Percent",
-    //   scale: ["white","brown"],
-    //   weight: 0.25,
-    //   color: "black",
-    //   opacity: 100,
-    //   fillOpacity: 1,
-    //   steps: 100
-    // }).addTo(myMap);
-
-
   });
 });
