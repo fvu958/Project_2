@@ -26,7 +26,7 @@ def home_route():
 def table_route():
     return render_template("datatable.html")
 
-@app.route("/story")
+@app.route("/summary")
 def bio_route():
     return render_template("story.html")
 

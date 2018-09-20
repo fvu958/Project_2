@@ -48,8 +48,6 @@ var svg = d3.select("body").append("svg")
 
 d3.json("/data", function(error, data) {
   if (error) throw error;
-//   console.log("YAAAAAAAY");
-//   console.log(data);
   data.forEach(function(d) {
     d.Total = +d.Total;
     d.GDP = +d.GDP;
@@ -111,7 +109,7 @@ var toolTip = d3.tip()
     .style("padding", '12px')
     .offset([-8, 0])
     .html(function(d) {
-      return (`<b>${d.Country}</b><br>Consumption: ${d.Total} GDP: ${d.GDP} Per 100,000`);
+      return (`<b>${d.Country}</b><br>Consumption: ${d.Total} GDP: ${d.GDP} (US$MM)`);
   });
 
 //Create tooltip in the chart

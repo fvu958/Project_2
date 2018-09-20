@@ -53,23 +53,21 @@
 
                 <ul class="nav navbar-nav navbar-left" style="background-color:rgb(120, 234, 225);">
                     <li><a href="/datatable">Data</a></li>
-                    <li><a href="/story">Story</a></li>
+                    <li><a href="/summary">Summary</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- The div where we will inject our map -->
     <div id="drinkButton">
-        <button id="beer" onclick="functionBeer()">Beer</button>
+        <button id="beer" onclick="updateDrink(beer)">Beer</button>
         <!-- <button id="beer">Beer</button> -->
-        <button id="wine" onclick="functionWine()">Wine</button>
+        <button id="wine" onclick="updateDrink(wine)">Wine</button>
         <!-- <button id="wine">Wine</button> -->
-        <button id="spirits" onclick="functionSpirits()">Spirits</button>
+        <button id="spirits" onclick="updateDrink(spirits)">Spirits</button>
         <!-- <button id="spirits">Spirits</button> -->
-        <button id="other" onclick="functionOther()">Other</button>
+        <button id="other" onclick="updateDrink(other)">Other</button>
         <!-- <button id="other">Other</button> -->
-
-
         <!-- <select id="selDataset" onchange="getData(this.value)">
             <option value="beerData">Beer</option>
             <option value="wineData">Wine</option>
@@ -80,12 +78,10 @@
     <br>
 
     <div id="map">
-        <!-- <select id="countryDataset" onchange="alcoholChanged(this.value)"> -->
-        <script type="text/javascript" src="{{ url_for('static', filename='js/beer.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/wine.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/wine.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/spirits.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/other.js') }}"></script>
-
+        <script type="text/javascript" src="{{ url_for('static', filename='js/other.js') }}"></script> -->
     </div>
 
     <div id="consumeRate">
