@@ -14,9 +14,18 @@ var xAxis = d3.axisBottom(x);
 
 var yAxis = d3.axisLeft(y);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#consumeGDP").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
+    .attr("position", "absolute")
+    .attr("top": "50px")
+    .attr("left":"20px")
+        // z-index:auto;
+        // width:auto;
+        // position:absolute;
+        // border-style:solid;
+        // border-width:medium;
+        // border-color:Blue;)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -91,7 +100,7 @@ var toolTip = d3.tip()
     .style("padding", '12px')
     .offset([-8, 0])
     .html(function(d) {
-      return (`<b>${d.Country}</b><br>Consumption: ${d.Total} liters/year <br>GDP: ${d.GDP} (US$MM)`);
+      return (`<b>${d.Country}</b><br>Consumption: ${d.Total} liters/year <br>GDP: ${d.GDP} (US$MM)<br>Legal Drinking Age: ${d.Age}`);
   });
 
 //Create tooltip in the chart

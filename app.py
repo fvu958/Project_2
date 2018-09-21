@@ -30,6 +30,10 @@ def table_route():
 def bio_route():
     return render_template("story.html")
 
+@app.route("/rate")
+def rate_route():
+    return render_template("consumeRate.html")
+
 @app.route("/data")
 def data_route():
 

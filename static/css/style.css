@@ -2,8 +2,8 @@
 body {
     padding: 0;
     margin: 0;
-    
-    background-image: url(../images/drink-image.jpg);
+    background-color:"lightgray";
+    /* background-image: url(../images/drink-image.jpg); */
   }
 
 .navbar {
@@ -17,9 +17,16 @@ html {
     height: 100%;
     }
 
-#map {
+#mapcontainer {
     width: 80%;
     margin: 0 10%;
+    height: 100%;
+    
+}
+
+#map {
+    height: 100%;
+    width: 100%;
 }
 
 #drinkButton {
@@ -50,6 +57,7 @@ html {
 
 #consumeRate {
     position: absolute;
+    background: green;
     width: 300px;
     height: 200px;
     z-index: 15;
@@ -73,6 +81,7 @@ body {
 
 #consumeGDP {
     position: absolute;
+    background: red;
     width: 300px;
     height: 200px;
     z-index: 15;
