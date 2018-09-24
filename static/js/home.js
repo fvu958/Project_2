@@ -39,14 +39,8 @@ function createChoropleth(alcoholType){
             fillOpacity: .75,
             steps: 5
         }).addTo(myMap);
-        
-
-        
-
-        
     });
     });
-
 }
 
 createChoropleth("Beer_Percent");

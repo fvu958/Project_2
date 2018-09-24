@@ -51,10 +51,10 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <ul class="nav navbar-nav navbar-left" style="background-color:rgb(120, 234, 225);">
-                    <li><a href="/datatable">Data</a></li>
-                    <li><a href="/summary">Summary</a></li>
+                <ul class="nav navbar-nav navbar-left" style="color: black; background-color:rgb(120, 234, 225);">
                     <li><a href="/rate">Consumption Rate</a></li>
+                    <li><a href="/datatable">Data Table</a></li>
+                    <li><a href="/summary">Project Summary</a></li>
                 </ul>
             </div>
         </div>
@@ -62,19 +62,9 @@
     <!-- The div where we will inject our map -->
     <div id="drinkButton" name="drinkButton">
         <button id="beer" onclick="createChoropleth('Beer_Percent')">Beer</button>
-        <!-- <button id="beer">Beer</button> -->
         <button id="wine" onclick="createChoropleth('Wine_Percent')">Wine</button>
-        <!-- <button id="wine">Wine</button> -->
         <button id="spirits" onclick="createChoropleth('Spirits_Percent')">Spirits</button>
-        <!-- <button id="spirits">Spirits</button> -->
         <button id="other" onclick="createChoropleth('Other_Percent')">Other</button>
-        <!-- <button id="other">Other</button> -->
-        <!-- <select id="selDataset" onchange="getData(this.value)">
-            <option value="beerData">Beer</option>
-            <option value="wineData">Wine</option>
-            <option value="spiritsData">Spirits</option>
-            <option value="otherData">Other</option>
-        </select> -->
     </div>
     <br>
 
@@ -84,17 +74,12 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/home.js') }}"></script>
     <br>
     <br>
-    <!-- <div id="ratecontainer">
-    <div class="charts" id="consumeRate"></div></div>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/consumeRate.js') }}"></script>
-    <br>
-    <br>
-    <div id="gdpcontainer">
-    <div class="charts" id="consumeGDP"></div></div>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/consumeGDP.js') }}"></script>
-    <br>
-    <br> -->
+    <div>
+        <p style="text-indent: 160px">
+            The color scale is from 0% to 100% by alcohol consumption type (beer, wine, spirits, other)</p>
+        <p style="text-indent: 160px">The scale is as follows: white | light-light-blue | light-blue | blue | dark-blue
+        </p>
+    </div>
 </body>
 <br>
-
 </html>
